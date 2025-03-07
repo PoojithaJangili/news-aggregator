@@ -14,10 +14,13 @@ function NewsPage() {
         fetchNews(category);
     }, [category]);
 
+    const API_BASE_URL = "https://news-aggregator-backend-k3gv.onrender.com";
+
     const fetchNews = async (selectedCategory) => {
         setLoading(true);
         try {
-            const response = await axios.get(`http://localhost:5000/news?category=${selectedCategory}`);
+            //const response = await axios.get(`http://localhost:5000/news?category=${selectedCategory}`);
+            const response = await axios.get(`${API_BASE_URL}/news?category=${selectedCategory}`);
             setNews(response.data.articles);
         } catch (error) {
             console.error("Error fetching news", error);
